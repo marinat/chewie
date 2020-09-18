@@ -4,19 +4,20 @@ import 'package:flutter/widgets.dart';
 import 'package:video_player/video_player.dart';
 
 class MaterialVideoProgressBar extends StatefulWidget {
-  MaterialVideoProgressBar(
-    this.controller, {
-    ChewieProgressColors colors,
-    this.onDragEnd,
-    this.onDragStart,
-    this.onDragUpdate,
-  }) : colors = colors ?? ChewieProgressColors();
+  MaterialVideoProgressBar(this.controller,
+      {ChewieProgressColors colors,
+      this.onDragEnd,
+      this.onDragStart,
+      this.onDragUpdate,
+      this.barHeight})
+      : colors = colors ?? ChewieProgressColors();
 
   final VideoPlayerController controller;
   final ChewieProgressColors colors;
   final Function() onDragStart;
   final Function() onDragEnd;
   final Function() onDragUpdate;
+  final double barHeight;
 
   @override
   _VideoProgressBarState createState() {
@@ -61,7 +62,7 @@ class _VideoProgressBarState extends State<MaterialVideoProgressBar> {
     return GestureDetector(
       child: Center(
         child: Container(
-          height: MediaQuery.of(context).size.height / 2,
+          height: widget.barHeight ?? MediaQuery.of(context).size.height / 2,
           width: MediaQuery.of(context).size.width,
           color: Colors.transparent,
           child: CustomPaint(
