@@ -34,6 +34,7 @@ class _MaterialControlsState extends State<MaterialControls>
 
   late VideoPlayerController controller;
   ChewieController? _chewieController;
+
   // We know that _chewieController is set in didChangeDependencies
   ChewieController get chewieController => _chewieController!;
 
@@ -411,6 +412,7 @@ class _MaterialControlsState extends State<MaterialControls>
                   handleColor: Theme.of(context).accentColor,
                   bufferedColor: Theme.of(context).backgroundColor,
                   backgroundColor: Theme.of(context).disabledColor),
+          barHeight: 2,
         ),
       ),
     );
